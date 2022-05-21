@@ -1,21 +1,68 @@
-public class attraction{
-protected int maxRiders;
-protected double ticketCost;
-protected int numTickets;
-protected int minHeight;
-protected int numAttendance;
-protected double cost;
-protected int lengthOfRide;
-protected int ridersPerHour;
-protected int hoursPerDay;
-protected int speed;
-private static int numAttractions;
+import java.util.*;
 
-//class constructor
-public attraction(){
-    maxRiders = 20;
-    ticketCost = 1.00;
-    //etc.
-    numAttractions ++;
-}
+public class attraction {  
+    protected int maxRiders;
+    protected int totalRiders; //number of people riding attraction
+    protected double ticketPrice;
+    protected double runningCost;
+    protected double rideLength; //in terms of hours
+    protected int speed;
+    protected int inLine; //number of peole in line
+    protected int totalRides;
+
+    //park hours: 6AM - 9PM
+    private final double openTime = 6.0;
+    protected final double closeTime = 21.0;
+
+    private static int numAttractions;
+    protected static double time; // 9:00 = 9.0, 15:00(3:00PM) = 15.0
+
+    //class constructor
+    public attraction(){
+        maxRiders = 20;
+        ticketCost = 1.00;
+        inLine = 0;
+        rideLength = 2.0/60.0; //default  = 2 min ride
+        time = 6.0; //ride opens at 6AM
+        //etc.
+        numAttractions ++;
+
+    }
+
+    //attraction running methods
+    public void getInLine(){ //when rider scans their ticket (assuming all single rider)
+        inLine ++;
+    }
+
+    public void run(){ //if irl, this command runs everytime the operator press the button to run the ride
+        if(!(time + rideLength > closeTime)){ //the ride will not run if it will past closing
+            if(maxRiders >= inLine){
+                totalRiders += inLine;
+                inLine = 0;
+            }
+            else{
+                totalRiders += maxRiders;
+                inLine -= maxRiders;
+            }
+            time += rideLength;
+            totalRides ++;
+        }
+    }
+
+    //other methods
+    public void incTicketPrice(int num){
+        ticketPrice += num;
+    }
+    
+    public double totalProft(){
+        return totalRiders*ticketCost - runningCost;
+    }
+
+    public int getTotalRiders(){
+        return totalRiders;
+    }
+
+    public int getNumAttractions(){
+            return numAttractions;
+    }
 }

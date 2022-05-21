@@ -1,0 +1,4 @@
+{
+    "wpilib.deployOffline": true,
+    "wpilib.offline": true
+}
