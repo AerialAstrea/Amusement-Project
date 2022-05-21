@@ -1,0 +1,5 @@
+public class attraction1{
+private int instanceVariable;
+
+//class constructor
+}

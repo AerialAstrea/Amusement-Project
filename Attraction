@@ -1,0 +1,21 @@
+public class attraction{
+protected int maxRiders;
+protected double ticketCost;
+protected int numTickets;
+protected int minHeight;
+protected int numAttendance;
+protected double cost;
+protected int lengthOfRide;
+protected int ridersPerHour;
+protected int hoursPerDay;
+protected int speed;
+private static int numAttractions;
+
+//class constructor
+public attraction(){
+    maxRiders = 20;
+    ticketCost = 1.00;
+    //etc.
+    numAttractions ++;
+}
+}
