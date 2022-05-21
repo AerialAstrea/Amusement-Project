@@ -1,0 +1,41 @@
+public class Ticket {
+    private String name;
+    private int age;
+    private int height;
+    private boolean fastPass; //if the user have a fast pass
+    private double balance;
+
+    public Ticket(String n, int a, int h, boolean p, double b){
+        name = n;
+        age = a;
+        height = h;
+        fastPass = p;
+        balance = b;
+    }
+
+    //accessor methods
+    public int getHeight(){
+        return height;
+    }
+
+    public boolean hasFastPass(){
+        return fastPass;
+    }
+
+    public double getBalance(){
+        return balance;
+    }
+
+    //mutator methods
+    public void deposit(double num){
+        balance += num;
+    }
+
+    public void withdraw(double num){
+        balance -= num;
+    }
+
+    public void getFastPass(){//run when customer buy a fast pass
+        hasFastPass = true;
+    }
+}

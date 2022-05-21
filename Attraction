@@ -7,8 +7,9 @@ public class attraction {
     protected double runningCost;
     protected double rideLength; //in terms of hours
     protected int speed;
-    protected int inLine; //number of peole in line
+    protected ArrayList<Ticket> inLine; //number of peole in line
     protected int totalRides;
+    private int minHeight; //in inches
 
     //park hours: 6AM - 9PM
     private final double openTime = 6.0;
@@ -20,42 +21,51 @@ public class attraction {
     //class constructor
     public attraction(){
         maxRiders = 20;
-        ticketCost = 1.00;
-        inLine = 0;
+        ticketPrice = 1.00;
+        inLine = new ArrayList<Ticket>();
         rideLength = 2.0/60.0; //default  = 2 min ride
         time = 6.0; //ride opens at 6AM
+        minHeight = 48;
         //etc.
         numAttractions ++;
 
     }
 
     //attraction running methods
-    public void getInLine(){ //when rider scans their ticket (assuming all single rider)
-        inLine ++;
+    public void getInLine(Ticket t){//accepts ticket if meet minHeight
+        if(t.getHeight() < minHeight)
+            System.out.println("Sorry, you do not meet the height requirement for this ride.");
+        else if(t.getBalance() < ticketPrice)
+            System.out.println("Sorry, your balance is too low.");
+        else{
+            System.out.println("Welcome!");
+            inLine.add(t);
+        }
     }
 
     public void run(){ //if irl, this command runs everytime the operator press the button to run the ride
         if(!(time + rideLength > closeTime)){ //the ride will not run if it will past closing
-            if(maxRiders >= inLine){
-                totalRiders += inLine;
-                inLine = 0;
-            }
-            else{
-                totalRiders += maxRiders;
-                inLine -= maxRiders;
-            }
-            time += rideLength;
-            totalRides ++;
+            if(maxRiders < inLine.size())
+                for(int i = 0; i < inLine.size(); i++){
+                    totalRiders++;
+                    inLine.remove(0);//takes the first person in line into the ride
+                }
+            else
+                for(int i = 0; i < maxRiders; i++){
+                    totalRiders++;
+                    inLine.remove(0);//takes the first person in line into the ride
+                }
+            totalRides++;
         }
     }
 
     //other methods
-    public void incTicketPrice(int num){
+    public void incTicketPrice(double num){
         ticketPrice += num;
     }
     
     public double totalProft(){
-        return totalRiders*ticketCost - runningCost;
+        return totalRiders*ticketPrice - runningCost;
     }
 
     public int getTotalRiders(){
