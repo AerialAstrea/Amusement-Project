@@ -6,7 +6,7 @@ public class attraction {
     protected double ticketPrice;
     protected double runningCost; // 1 = 1 million
     protected double rideLength; // in terms of hours
-    private int minHeight; // in inches
+    protected int minHeight; // in inches
 
     //instance variables to be tracked in the class
     protected ArrayList<Ticket> inLine = new ArrayList<Ticket>(); //number of peole in line
@@ -74,23 +74,23 @@ public class attraction {
                     break;
                 }
             }
+            inLine.add(t);
         }
     }
 
     public void run(){ //if irl, this command runs everytime the operator press the button to run the ride
-        if(!(time + rideLength > closeTime)){ //the ride will not run if it will past closing
-            if(maxRiders < inLine.size())
-                for(int i = 0; i < inLine.size(); i++){
-                    totalRiders++;
-                    inLine.remove(0);//takes the first person in line into the ride
-                }
-            else
-                for(int i = 0; i < maxRiders; i++){
-                    totalRiders++;
-                    inLine.remove(0);//takes the first person in line into the ride
-                }
-            totalRides++;
+        int currentNumRider = 0;
+        if(time + rideLength <= closeTime){ //the ride will not run if it will past closing
+            int counter = 0;
+            while(currentNumRider < maxRiders && counter < getNumInLine()){
+                int partySize = inLine.get(counter).getPartySize();
+                if(partySize + currentNumRider < maxRiders)
+                    currentNumRider += partySize;
+                else
+                    counter++;
+            }
         }
+        totalRiders += currentNumRider;
     }
 
     //other methods
@@ -107,6 +107,13 @@ public class attraction {
     }
 
     public int getNumAttractions(){
-            return numAttractions;
+        return numAttractions;
+    }
+
+    public int getNumInLine(){
+        int numInLine = 0;
+        for(Ticket party : inLine)
+            numInLine += party.getPartySize();
+        return numInLine;
     }
 }

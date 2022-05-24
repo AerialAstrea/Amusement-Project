@@ -1,0 +1,7 @@
+public class SimulatePark{
+    public static void main(){
+        Attraction a1 = new Attraction();
+        a1.run();
+        isASmalWorld a2 = new isASmalWorld();
+    }
+}
