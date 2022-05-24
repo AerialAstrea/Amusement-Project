@@ -1,21 +1,19 @@
-public class Ticket {
-    private String name;
-    private int age;
-    private int height;
-    private boolean fastPass; //if the user have a fast pass
+import java.util.*;
+
+public class Ticket {//a ticket is a party of riders
+    private ArrayList<Rider> riders;
+    private boolean fastPass; //if the party has fast pass
     private double balance;
 
-    public Ticket(String n, int a, int h, boolean p, double b){
-        name = n;
-        age = a;
-        height = h;
-        fastPass = p;
+    public Ticket(ArrayList<Rider> r, boolean f, double b){
+        riders = r;
+        fastPass = f;
         balance = b;
     }
 
     //accessor methods
-    public int getHeight(){
-        return height;
+    public ArrayList<Rider> getRiders(){
+        return riders;
     }
 
     public boolean hasFastPass(){
@@ -24,6 +22,10 @@ public class Ticket {
 
     public double getBalance(){
         return balance;
+    }
+
+    public int getPartySize(){
+        return riders.size();
     }
 
     //mutator methods
@@ -36,6 +38,6 @@ public class Ticket {
     }
 
     public void getFastPass(){//run when customer buy a fast pass
-        hasFastPass = true;
+        fastPass = true;
     }
 }
