@@ -4,6 +4,7 @@ public class rollercoaster extends attraction {
     private int[][] cart = new int[2][3];
     private ArrayList<Ticket> regLine;
     private ArrayList<Ticket> fastLine;
+    private boolean end;
 
     //class constructor
     public rollercoaster(){
@@ -77,5 +78,10 @@ public class rollercoaster extends attraction {
             }
         }
         totalRiders += currentNumRider;
+        time += rideLength;
+    }
+
+    public void end(){
+        end = true; //when the switch on the rollercoaster is hit/switched
     }
 }

@@ -91,6 +91,7 @@ public class attraction {
             }
         }
         totalRiders += currentNumRider;
+        time += rideLength;
     }
 
     //other methods
@@ -115,5 +116,9 @@ public class attraction {
         for(Ticket party : inLine)
             numInLine += party.getPartySize();
         return numInLine;
+    }
+
+    public double getWaitTime(){//wait time displayed at the start of the ride for people to decide whether to get in line or not
+        return (double)getNumInLine()/maxRiders*rideLength;
     }
 }
