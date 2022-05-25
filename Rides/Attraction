@@ -77,6 +77,14 @@ public class attraction {
             inLine.add(t);
         }
     }
+    
+    public void printLine(){
+        for(int i = 0; i < inLine.size(); i++){
+            inLine.get(i).printParty();
+            if(i != inLine.size()-1)
+            System.out.println();
+        }
+    }
 
     public void run(){ //if irl, this command runs everytime the operator press the button to run the ride
         int currentNumRider = 0;

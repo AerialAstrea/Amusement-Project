@@ -1,7 +1,34 @@
-public class SimulatePark{
-    public static void main(){
-        Attraction a1 = new Attraction();
-        a1.run();
-        isASmalWorld a2 = new isASmalWorld();
+import java.util.*;
+/**
+ * Write a description of class attractionTest here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class attractionTest
+{
+    public static void main()
+    {
+        //testing ArrayList
+        ArrayList<Rider> party1 = new ArrayList<Rider>();
+        party1.add(new Rider("Josie",48)); party1.add(new Rider("Lauren",56)); party1.add(new Rider("Alyssa",47)); party1.add(new Rider("Chloe",49)); 
+        ArrayList<Rider> party2 = new ArrayList<Rider>();
+        party2.add(new Rider("Maddy",51)); party2.add(new Rider("Eva",63)); party2.add(new Rider("Molly",39)); 
+        ArrayList<Rider> party3 = new ArrayList<Rider>();
+        party3.add(new Rider("Virginia",33)); party3.add(new Rider("Freya",44)); party3.add(new Rider("Anna",50));
+        party3.add(new Rider("Yanka",45)); party3.add(new Rider("Mary",61)); party3.add(new Rider("Elizabeth",56)); 
+        ArrayList<Rider> party4 = new ArrayList<Rider>();
+        party4.add(new Rider("Julia",50)); party4.add(new Rider("Emery",56));party4.add(new Rider("Jasmine",55)); party4.add(new Rider("Piper",51)); 
+        ArrayList<Rider> party5 = new ArrayList<Rider>();
+        party5.add(new Rider("Alana",44)); party5.add(new Rider("Tess",41)); party5.add(new Rider("Nnenna",45)); party5.add(new Rider("Sadie",39));
+        
+        Ticket p1 = new Ticket(party1, true, 130.00);
+        Ticket p2 = new Ticket(party2, false, 80.00);
+        Ticket p3 = new Ticket(party3, true, 110.00);
+        Ticket p4 = new Ticket(party4, false, 20.00);
+        
+        attraction a1 = new attraction();
+        a1.getInLine(p1); a1.getInLine(p2); a1.getInLine(p3); a1.getInLine(p4);
+        a1.printLine();
     }
 }

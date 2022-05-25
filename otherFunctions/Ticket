@@ -40,4 +40,10 @@ public class Ticket {//a ticket is a party of riders
     public void getFastPass(){//run when customer buy a fast pass
         fastPass = true;
     }
+    
+    public void printParty(){
+        for(Rider rider: riders){
+            System.out.print(rider.getName() + " ");
+        }
+    }
 }
