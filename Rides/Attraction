@@ -85,16 +85,23 @@ public class attraction {
             if(i != inLine.size()-1)
             System.out.println();
         }
+        
+        if(inLine.size()==0)
+            System.out.println("Line is empty.");
+        else
+            System.out.println();
     }
 
     public void run(){ //if irl, this command runs everytime the operator press the button to run the ride
         int currentNumRider = 0;
         if(time + rideLength <= closeTime){ //the ride will not run if it will past closing
             int counter = 0;
-            while(currentNumRider < maxRiders && counter < getNumInLine(inLine)){
+            while(currentNumRider < maxRiders && counter < inLine.size()){
                 int partySize = inLine.get(counter).getPartySize();
-                if(partySize + currentNumRider < maxRiders)
+                if(partySize + currentNumRider < maxRiders){
                     currentNumRider += partySize;
+                    inLine.remove(counter);
+                }
                 else
                     counter++;
             }

@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class attractionTest
 {
-    public static void main()
+    public static void attractionTest()
     {
         //testing ArrayList
         ArrayList<Rider> party1 = new ArrayList<Rider>();
@@ -30,5 +30,63 @@ public class attractionTest
         attraction a1 = new attraction();
         a1.getInLine(p1); a1.getInLine(p2); a1.getInLine(p3); a1.getInLine(p4);
         a1.printLine();
+        /* Expected Name Print:
+         * Josie Lauren Chloe 
+         * Anna Mary Elizabeth 
+         * Maddy Eva 
+         * Julia Emery Jasmine Piper
+         */
+        
+        a1.run();
+        a1.printLine();
+        /* Expected Name Print:
+         * --- none names
+         */
+    
+    }
+    
+    public static void rollercoasterTest()
+    {
+        //testing ArrayList
+        ArrayList<Rider> party1 = new ArrayList<Rider>();
+        party1.add(new Rider("Josie",48)); party1.add(new Rider("Lauren",56)); party1.add(new Rider("Alyssa",47)); party1.add(new Rider("Chloe",49)); 
+        ArrayList<Rider> party2 = new ArrayList<Rider>();
+        party2.add(new Rider("Maddy",51)); party2.add(new Rider("Eva",63)); party2.add(new Rider("Molly",39)); 
+        ArrayList<Rider> party3 = new ArrayList<Rider>();
+        party3.add(new Rider("Virginia",33)); party3.add(new Rider("Freya",44)); party3.add(new Rider("Anna",50));
+        party3.add(new Rider("Yanka",45)); party3.add(new Rider("Mary",61)); party3.add(new Rider("Elizabeth",56)); 
+        ArrayList<Rider> party4 = new ArrayList<Rider>();
+        party4.add(new Rider("Julia",50)); party4.add(new Rider("Emery",56));party4.add(new Rider("Jasmine",55)); party4.add(new Rider("Piper",51)); 
+        ArrayList<Rider> party5 = new ArrayList<Rider>();
+        party5.add(new Rider("Alana",44)); party5.add(new Rider("Tess",41)); party5.add(new Rider("Nnenna",45)); party5.add(new Rider("Sadie",39));
+        
+        Ticket p1 = new Ticket(party1, true, 130.00);
+        Ticket p2 = new Ticket(party2, false, 80.00);
+        Ticket p3 = new Ticket(party3, true, 110.00);
+        Ticket p4 = new Ticket(party4, false, 20.00);
+        
+        rollercoaster r1 = new rollercoaster();
+        r1.getInLine(p1); r1.getInLine(p2); r1.getInLine(p3); r1.getInLine(p4);
+        r1.printLine();
+        /* Expected Name Print:
+         * Fast Pass Line:
+         * Josie Lauren Chloe 
+         * Anna Mary Elizabeth 
+         *
+         * Regular Pass Line:
+         * Maddy Eva 
+         * Julia Emery Jasmine Piper
+         */
+        
+        r1.run();//run somehow activate the scanner
+        r1.printLine();
+        /* Expected Name Print:
+         * Fast Pass Line:
+         * Anna Mary Elizabeth 
+         *
+         * Regular Pass Line:
+         * Julia Emery Jasmine Piper
+         */
+        
     }
 }
