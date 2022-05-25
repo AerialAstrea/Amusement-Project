@@ -54,9 +54,10 @@ public class attraction {
             else
                 validRiders.add(rider);
         }
+        Ticket temp = new Ticket(validRiders, t.hasFastPass(), t.getBalance());
         if(ticketPrice*validRiders.size() <= t.getBalance()){
             System.out.println("Welcome!");
-            inLine.add(t);
+            inLine.add(temp);
         }
         else{
             Scanner s = new Scanner(System.in);
