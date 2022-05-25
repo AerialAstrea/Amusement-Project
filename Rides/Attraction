@@ -82,7 +82,7 @@ public class attraction {
         int currentNumRider = 0;
         if(time + rideLength <= closeTime){ //the ride will not run if it will past closing
             int counter = 0;
-            while(currentNumRider < maxRiders && counter < getNumInLine()){
+            while(currentNumRider < maxRiders && counter < getNumInLine(inLine)){
                 int partySize = inLine.get(counter).getPartySize();
                 if(partySize + currentNumRider < maxRiders)
                     currentNumRider += partySize;
@@ -111,14 +111,14 @@ public class attraction {
         return numAttractions;
     }
 
-    public int getNumInLine(){
+    public int getNumInLine(ArrayList<Ticket> line){
         int numInLine = 0;
-        for(Ticket party : inLine)
+        for(Ticket party : line)
             numInLine += party.getPartySize();
         return numInLine;
     }
 
     public double getWaitTime(){//wait time displayed at the start of the ride for people to decide whether to get in line or not
-        return (double)getNumInLine()/maxRiders*rideLength;
+        return (double)getNumInLine(inLine)/maxRiders*rideLength;
     }
 }

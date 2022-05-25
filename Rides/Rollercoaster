@@ -5,6 +5,7 @@ public class rollercoaster extends attraction {
     private ArrayList<Ticket> regLine;
     private ArrayList<Ticket> fastLine;
     private boolean end;
+    private boolean restraint; //true = restraints down, false = restraints up
 
     //class constructor
     public rollercoaster(){
@@ -65,23 +66,44 @@ public class rollercoaster extends attraction {
         return validRiders;
     }
 
-    public void run(){ 
+    public void run(){ //line ratio fast:reg, 2:1 (idea: do a tracker for 1-3 and if odd: take fast party, even: take reg party)
         int currentNumRider = 0;
+        int tracker = 1;
         if(time + rideLength <= closeTime){ //the ride will not run if it will past closing
             int counter = 0;
-            while(currentNumRider < 6 && counter < getNumInLine()){
-                int partySize = inLine.get(counter).getPartySize();
-                if(partySize + currentNumRider < maxRiders)
-                    currentNumRider += partySize;
-                else
-                    counter++;
+            while(currentNumRider < maxRiders){//run until the cart is filled (reach maxRider)
+                if(tracker % 2 != 0 && counter < getNumInLine(fastLine)){ //when odd, take party from fast lane
+                    int partySize = fastLine.get(counter).getPartySize();
+                    if(partySize + currentNumRider <= maxRiders){//add the party if does not exceed maxRider
+                        currentNumRider += partySize;
+                        fastLine.remove(counter);
+                    }
+                    else//update if a working party if not found
+                        counter++;
+                    tracker++;
+                }
+                else if(tracker % 2 == 0 && counter < getNumInLine(regLine)){ //when even, take party from reg line
+                    int partySize = regLine.get(counter).getPartySize();
+                    if(partySize + currentNumRider <= maxRiders){//add the party if does not exceed maxRider
+                        currentNumRider += partySize;
+                        regLine.remove(counter);
+                    }
+                    else//update if a working party if not found
+                        counter++;
+                    tracker++;
+                }
+                if(tracker == 3)//reset the tracker
+                tracker = 1;
             }
         }
         totalRiders += currentNumRider;
         time += rideLength;
+        end = false; //ride started so shouldn't end
+        restraint = true;
     }
 
     public void end(){
         end = true; //when the switch on the rollercoaster is hit/switched
+        restraint = false;
     }
 }
