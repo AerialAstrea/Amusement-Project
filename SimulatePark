@@ -25,7 +25,7 @@ public class attractionTest
         Ticket p1 = new Ticket(party1, true, 130.00);
         Ticket p2 = new Ticket(party2, false, 80.00);
         Ticket p3 = new Ticket(party3, true, 110.00);
-        Ticket p4 = new Ticket(party4, false, 20.00);
+        Ticket p4 = new Ticket(party4, false, 2.00); //not enough money, need 4.00 to ride
         
         attraction a1 = new attraction();
         a1.getInLine(p1); a1.getInLine(p2); a1.getInLine(p3); a1.getInLine(p4);
@@ -36,7 +36,7 @@ public class attractionTest
          * Maddy Eva 
          * Julia Emery Jasmine Piper
          */
-        
+        System.out.println("----");
         a1.run();
         a1.printLine();
         /* Expected Name Print:
@@ -63,7 +63,7 @@ public class attractionTest
         Ticket p1 = new Ticket(party1, true, 130.00);
         Ticket p2 = new Ticket(party2, false, 80.00);
         Ticket p3 = new Ticket(party3, true, 110.00);
-        Ticket p4 = new Ticket(party4, false, 20.00);
+        Ticket p4 = new Ticket(party4, false, 2.00); //not enough money, need 4.00 to ride
         
         rollercoaster r1 = new rollercoaster();
         r1.getInLine(p1); r1.getInLine(p2); r1.getInLine(p3); r1.getInLine(p4);
@@ -78,7 +78,8 @@ public class attractionTest
          * Julia Emery Jasmine Piper
          */
         
-        r1.run();//run somehow activate the scanner
+        System.out.println("----");
+        r1.run();//run somehow activate the scanner shark was here :)
         r1.printLine();
         /* Expected Name Print:
          * Fast Pass Line:

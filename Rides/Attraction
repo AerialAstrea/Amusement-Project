@@ -42,40 +42,31 @@ public class attraction {
 
     //attraction running methods
     public void getInLine(Ticket t){//accepts ticket if meet minHeight
-        ArrayList<Rider> party = t.getRiders();
-        ArrayList<Rider> validRiders = new ArrayList();
-        for(Rider rider : party){
-            if(rider.getHeight() < minHeight)
-                System.out.println("Sorry, you do not meet the height requirement for this ride.");
-            else if (t.getPartySize()>1){
-                System.out.println("Please wait until all tickets are scanned");
-                validRiders.add(rider); 
-            }
-            else
-                validRiders.add(rider);
-        }
-        Ticket temp = new Ticket(validRiders, t.hasFastPass(), t.getBalance());
-        if(ticketPrice*validRiders.size() <= t.getBalance()){
-            System.out.println("Welcome!");
-            inLine.add(temp);
-        }
-        else{
+        Ticket temp = new Ticket(checkTicket(t), t.hasFastPass(), t.getBalance());
+        
+        if(ticketPrice*temp.getRiders().size() > t.getBalance()){
             Scanner s = new Scanner(System.in);
-            while(t.getBalance() < ticketPrice*validRiders.size()){
+            while(t.getBalance() < ticketPrice*temp.getRiders().size()){
                 System.out.println("Sorry, your balance is too low. Would you like to reload it? (y/n)");
                 String response = s.nextLine();
                 if(response.equals("y")){
                     System.out.println("How much would you like to reload?");
                     Scanner i = new Scanner(System.in);
-                    int reload = i.nextInt();
+                    double reload = i.nextDouble();
                     t.deposit(reload);
+                    temp.deposit(reload);//make depos into temp
                 }
                 else{
                     System.out.println("Please exit the line");
                     break;
                 }
             }
-            inLine.add(t);
+        }
+        if(ticketPrice*temp.getRiders().size() <= t.getBalance()){
+            t.withdraw(ticketPrice*t.getRiders().size());
+            temp.withdraw(ticketPrice*t.getRiders().size());
+            inLine.add(temp);
+            System.out.println("Welcome!");
         }
     }
     
@@ -109,7 +100,49 @@ public class attraction {
         totalRiders += currentNumRider;
         time += rideLength;
     }
-
+    
+    public ArrayList<Rider> checkTicket(Ticket t){
+        ArrayList<Rider> party = t.getRiders();
+        ArrayList<Rider> validRiders = new ArrayList();
+        for(Rider rider : party){
+            if(rider.getHeight() < minHeight)
+                System.out.println("Sorry, you do not meet the height requirement for this ride.");
+            else if (t.getPartySize()>1){
+                System.out.println("Please wait until all tickets are scanned");
+                validRiders.add(rider); 
+            }
+            else
+                validRiders.add(rider);
+        }
+        return validRiders;
+    }
+    
+    public boolean checkBalance(Ticket t){
+        boolean enoughMoney;
+        if(ticketPrice*t.getRiders().size() <= t.getBalance()){
+            enoughMoney = true;
+            t.withdraw(ticketPrice*t.getRiders().size());
+        }
+        else{
+            Scanner s = new Scanner(System.in);
+            while(t.getBalance() < ticketPrice*t.getRiders().size()){
+                System.out.println("Sorry, your balance is too low. Would you like to reload it? (y/n)");
+                String response = s.nextLine();
+                if(response.equals("y")){
+                    System.out.println("How much would you like to reload?");
+                    double reload = s.nextDouble();
+                    t.deposit(reload);//make depos into temp
+                }
+                else{
+                    System.out.println("Please exit the line");
+                    break;
+                }
+            }
+            enoughMoney = true;
+            t.withdraw(ticketPrice*t.getRiders().size());
+        }
+        return enoughMoney;
+    }
     //other methods
     public void incTicketPrice(double num){
         ticketPrice += num;

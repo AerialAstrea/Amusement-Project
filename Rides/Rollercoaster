@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class rollercoaster extends attraction {
-    private int[][] cart = new int[2][3];
     private ArrayList<Ticket> regLine = new ArrayList<Ticket>();
     private ArrayList<Ticket> fastLine = new ArrayList<Ticket>();
     private boolean end;
@@ -19,23 +18,15 @@ public class rollercoaster extends attraction {
 
     public void getInLine(Ticket t){
         Ticket temp = new Ticket(checkTicket(t), t.hasFastPass(), t.getBalance());
- 
-        if(ticketPrice*temp.getPartySize() <= t.getBalance()){//if have enough balance to ride
-            System.out.println("Welcome!");
-            if(t.hasFastPass())
-                fastLine.add(temp);
-            else
-                regLine.add(temp);
-        }
-        else{//if their balance is too low-
+        
+        if(ticketPrice*temp.getPartySize() > t.getBalance()){//if their balance is too low-
             Scanner s = new Scanner(System.in);
             while(t.getBalance() < ticketPrice*temp.getPartySize()){
                 System.out.println("Sorry, your balance is too low. Would you like to reload it? (y/n)");
                 String response = s.nextLine();
                 if(response.equals("y")){
                     System.out.println("How much would you like to reload?");
-                    Scanner i = new Scanner(System.in);
-                    double reload = i.nextDouble();
+                    double reload = s.nextDouble();
                     t.deposit(reload);
                 }
                 else{
@@ -43,27 +34,16 @@ public class rollercoaster extends attraction {
                     break;
                 }
             }
+        }
+        if(ticketPrice*temp.getRiders().size() <= t.getBalance()){
+            t.withdraw(ticketPrice*t.getRiders().size());
+            temp.withdraw(ticketPrice*t.getRiders().size());
             if(t.hasFastPass())
                 fastLine.add(temp);
             else
                 regLine.add(temp);
+            System.out.println("Welcome!");    
         }
-    }
-
-    private ArrayList<Rider> checkTicket(Ticket t){ //class method to scan ticket (basically getInLine method but modified to return line)
-        ArrayList<Rider> party = t.getRiders();
-        ArrayList<Rider> validRiders = new ArrayList();
-        for(Rider rider : party){
-            if(rider.getHeight() < minHeight)
-                System.out.println("Sorry, you do not meet the height requirement for this ride.");
-            else if (t.getPartySize()>1){
-                System.out.println("Please wait until all tickets are scanned");
-                validRiders.add(rider); 
-            }
-            else
-                validRiders.add(rider);
-        }
-        return validRiders;
     }
     
     public void printLine(){
@@ -74,7 +54,7 @@ public class rollercoaster extends attraction {
             System.out.println();
         }
         System.out.println("\n");
-        System.out.println("Regular Pass Line:");
+        System.out.println("Regular Line:");
         for(int i = 0; i < regLine.size(); i++){
             regLine.get(i).printParty();
             if(i != regLine.size()-1)
@@ -95,18 +75,19 @@ public class rollercoaster extends attraction {
         int tracker = 1;
         if(time + rideLength <= closeTime){ //the ride will not run if it will past closing
             int counter = 0;
-            while(currentNumRider < maxRiders){//run until the cart is filled (reach maxRider)
-                if(tracker % 2 != 0 && counter < fastLine.size()){ //when odd, take party from fast lane
+            while(currentNumRider < maxRiders && counter < fastLine.size() && counter < regLine.size()){//run until the cart is filled (reach maxRider)
+                if(tracker % 2 != 0){ //when odd, take party from fast lane
                     int partySize = fastLine.get(counter).getPartySize();
                     if(partySize + currentNumRider <= maxRiders){//add the party if does not exceed maxRider
                         currentNumRider += partySize;
                         fastLine.remove(counter);
+                        //counter not increase because arraylist is shifted
                     }
                     else//update if a working party if not found
                         counter++;
                     tracker++;
                 }
-                else if(tracker % 2 == 0 && counter < regLine.size()){ //when even, take party from reg line
+                else if(tracker % 2 == 0){ //when even, take party from reg line
                     int partySize = regLine.get(counter).getPartySize();
                     if(partySize + currentNumRider <= maxRiders){//add the party if does not exceed maxRider
                         currentNumRider += partySize;

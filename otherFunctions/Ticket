@@ -41,6 +41,10 @@ public class Ticket {//a ticket is a party of riders
         fastPass = true;
     }
     
+    public void setBalance(double num){
+        balance = num;
+    }
+    
     public void printParty(){
         for(Rider rider: riders){
             System.out.print(rider.getName() + " ");
