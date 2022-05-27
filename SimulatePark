@@ -90,4 +90,17 @@ public class attractionTest
          */
         
     }
+    
+    public static void itsASmallWOrldTest(){
+        ArrayList<Rider> party1 = new ArrayList(); 
+        party1.add(new Rider("bob", 70)); party1.add(new Rider("lucy",  65));
+        Ticket t1 = new Ticket(party1, true, 200);
+        ArrayList<Rider> party2 = new ArrayList(); 
+        party2.add(new Rider("karen", 66)); party2.add(new Rider("charle",  72));
+        Ticket t2 = new Ticket(party2, false, 45);
+        
+        itsASmallWorld s1 = new itsASmallWorld();
+        s1.scanTicket(t1);
+        s1.go();
+    }
 }
