@@ -2,12 +2,20 @@ package Rides;
 
 import java.util.ArrayList;
 
-public class itsASmallWorld extends Attraction  
+public class itsASmallWorld extends attraction  
 {
-    private boolean singing;
-    private boolean firstHalfRide;
-    private boolean secondHalfRide;
-    
+    protected boolean singing;
+    protected boolean firstHalfRide;
+    protected boolean secondHalfRide;
+    protected boolean startOfRide;
+    protected boolean loadChair;
+    protected int maxBoats = 7;
+    protected int currentBoats;
+    protected boolean emergencyStop;
+    public boolean endOfRiver;
+    ArrayList<Rider> bob = new ArrayList();
+    Ticket p = new Ticket(bob, true, 250.00);
+
     public void makeLyrics1(){
         ArrayList <String> lyrics1 = new ArrayList<String>();
         lyrics1.add("It's a world of laughter");
@@ -18,7 +26,7 @@ public class itsASmallWorld extends Attraction
         lyrics1.add("That it's time we're aware");
         lyrics1.add("It's a small world after all");
         for(String s1: lyrics1)
-        System.out.println(s1);
+            System.out.println(s1);
     }
 
     public void makeLyrics2(){
@@ -31,9 +39,9 @@ public class itsASmallWorld extends Attraction
         lyrics2.add("And the oceans are wide");
         lyrics2.add("It's a small world after all");
         for(String s: lyrics2)
-        System.out.println(s);
+            System.out.println(s);
     }
-    
+
     public void makeChorus(){
         ArrayList <String> chorus = new ArrayList<String>();
         chorus.add("It's a small world after all");
@@ -41,9 +49,9 @@ public class itsASmallWorld extends Attraction
         chorus.add("It's a small world after all");
         chorus.add("It's a small, small world");
         for(String c: chorus)
-        System.out.println(c);
+            System.out.println(c);
     }
-    
+
     public void isSingingSection(){
         if(singing && firstHalfRide){
             makeLyrics1();
@@ -54,12 +62,45 @@ public class itsASmallWorld extends Attraction
             makeChorus();
         }
     }
-    
+
     public itsASmallWorld(){
-        super();
+        super(); 
         ticketPrice = 1.50; 
         maxRiders = 15;
         rideLength = 5.00 /60.00; //ride is 5 mins long 
         isSingingSection();
+    }
+
+    public void scanTicket(Ticket t1){
+        Ticket t = new Ticket(t1.getRiders(), t1.hasFastPass(), t1.getBalance());
+        getInLine(t1); 
+    }  
+
+    public void numBoats(){
+        if(currentBoats < maxBoats){
+            scanTicket(p);
+            currentBoats ++;
+            numBoats();
+            System.out.print("next boat");
+        }
+        else 
+            System.out.println("wait your turn");
+    }
+
+    public void outOfBoat(){
+        if(endOfRiver == true){
+            System.out.println("time to get out of the boat, the ride is over");
+        }
+    }
+
+    public void go(){
+        if(time<closeTime){
+            numBoats();
+            isSingingSection();
+        }
+        if(time == rideLength){
+            endOfRiver = true;
+            outOfBoat();
+        }
     }
 }
