@@ -1,3 +1,5 @@
+package rides;
+
 import java.util.*;
 
 public class Attraction {

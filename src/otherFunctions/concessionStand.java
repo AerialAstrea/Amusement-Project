@@ -1,3 +1,5 @@
+package src.otherFunctions;
+
 public class concessionStand{
     private double runningCost;
     private String name; //name of the concession stand
@@ -42,7 +44,7 @@ public class concessionStand{
         t.withdraw(f.getPrice()*.8 + d.getPrice()*.2);
         gain += f.getPrice()*.8 + d.getPrice()*.2;
     }
-    
+
     public double totalProfit(){
         return gain - runningCost;
     }

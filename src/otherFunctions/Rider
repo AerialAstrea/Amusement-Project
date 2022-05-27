@@ -1,3 +1,5 @@
+package otherFunctions;
+
 public class Rider{
     private String name;
     private int height; //in inches

@@ -1,3 +1,5 @@
+package otherFunctions;
+
 import java.util.*;
 
 public class Ticket {//a ticket is a party of riders
