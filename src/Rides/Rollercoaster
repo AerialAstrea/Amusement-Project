@@ -7,12 +7,12 @@ public class Rollercoaster extends attraction {
     private boolean restraint; //true = restraints down, false = restraints up
 
     //class constructor
-    public rollercoaster(){
+    public Rollercoaster(){
         super();
         maxRiders = 6;
     }
 
-    public rollercoaster(double t, double rC, double rL, int minH){
+    public Rollercoaster(double t, double rC, double rL, int minH){
         super(6, t, rC, rL, minH);
     }
 
@@ -107,6 +107,10 @@ public class Rollercoaster extends attraction {
         restraint = true;
     }
 
+    public double getWaitTime(){//wait time displayed at the start of the ride for people to decide whether to get in line or not
+        return (double)(getNumInLine(fastLine)+getNumInLine(regLine))/maxRiders*rideLength;
+    }
+    
     public void end(){
         end = true; //when the switch on the rollercoaster is hit/switched
         restraint = false;

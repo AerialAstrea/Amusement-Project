@@ -1,4 +1,4 @@
-package rides;
+package Rides;
 
 import java.util.*;
 
@@ -6,10 +6,9 @@ public class Attraction {
     //instance variable to be set in constructor
     protected int maxRiders;
     protected double ticketPrice;
-    protected double runningCost; // for one rider
+    protected double runningCost; // 1 = 1 million
     protected double rideLength; // in terms of hours
     protected int minHeight; // in inches
-    protected double addOpCost; //any additional operating cost (such as maintenance)
 
     //instance variables to be tracked in the class
     protected ArrayList<Ticket> inLine = new ArrayList<Ticket>(); //number of peole in line
@@ -25,23 +24,21 @@ public class Attraction {
     protected static double time = 6.00; // 9:00 = 9.0, 15:00(3:00PM) = 15.0 (static because time should be the same for all objects)
 
     //class constructor
-    public attraction(){
+    public Attraction(){
         maxRiders = 20;
         ticketPrice = 1.00;
-        runningCost = 0.25;
+        runningCost = 5.0; //average Disney ride cost $5 million to operate
         rideLength = 2.0/60.0; //default = 2 min ride
         minHeight = 48;
-        addOpCost = 0;
         numAttractions ++;
     }
 
-    public attraction(int m, double t, double rC, double rL, int minH){//maxRider, ticketPrice, runCost, rideLen, minH
+    public attraction(int m, double t, double rC, double rL, int minH){
         maxRiders = m;
         ticketPrice = t;
         runningCost = rC;
         rideLength = rL;
         minHeight = minH;
-        addOpCost = 0;
         numAttractions ++;
     }
 
@@ -153,12 +150,8 @@ public class Attraction {
         ticketPrice += num;
     }
     
-    public void addAdditionalCost(double num){
-        addOpCost += num;
-    }
-
     public double totalProft(){
-        return totalRiders*ticketPrice - totalRides*runningCost - addOpCost;
+        return totalRiders*ticketPrice - runningCost;
     }
 
     public int getTotalRiders(){
@@ -178,5 +171,10 @@ public class Attraction {
 
     public double getWaitTime(){//wait time displayed at the start of the ride for people to decide whether to get in line or not
         return (double)getNumInLine(inLine)/maxRiders*rideLength;
+    }
+    
+    public String getInfo(){
+        return "Max Riders: " + maxRiders + "\nTicket Price: $" + ticketPrice + "\nRide Length: " + rideLength*60.0 + " minutes" +
+        "\nMin. Required Height: " + minHeight + " inches" + "\nCurrent Wait Time: " + getWaitTime();
     }
 }
