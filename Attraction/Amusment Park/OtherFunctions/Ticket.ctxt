@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Ticket
+comment1.params=r\ f\ b
+comment1.target=Ticket(java.util.ArrayList,\ boolean,\ double)
+comment10.params=
+comment10.target=void\ printParty()
+comment2.params=
+comment2.target=java.util.ArrayList\ getRiders()
+comment3.params=
+comment3.target=boolean\ hasFastPass()
+comment4.params=
+comment4.target=double\ getBalance()
+comment5.params=
+comment5.target=int\ getPartySize()
+comment6.params=num
+comment6.target=void\ deposit(double)
+comment7.params=num
+comment7.target=void\ withdraw(double)
+comment8.params=
+comment8.target=void\ getFastPass()
+comment9.params=num
+comment9.target=void\ setBalance(double)
+numComments=11

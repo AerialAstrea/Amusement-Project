@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Fries
+comment1.params=n\ p\ s\ salted
+comment1.target=Fries(java.lang.String,\ double,\ java.util.ArrayList,\ boolean)
+comment2.params=
+comment2.target=void\ addSalt()
+numComments=3

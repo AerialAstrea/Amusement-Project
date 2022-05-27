@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Food
+comment1.params=
+comment1.target=Food()
+comment2.params=n\ p\ s
+comment2.target=Food(java.lang.String,\ double,\ java.util.ArrayList)
+comment3.params=
+comment3.target=java.lang.String\ getName()
+comment4.params=
+comment4.target=double\ getPrice()
+comment5.params=s
+comment5.target=void\ addSauce(Sauce)
+numComments=6

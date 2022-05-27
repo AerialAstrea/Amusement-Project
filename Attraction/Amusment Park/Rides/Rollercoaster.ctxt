@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Rollercoaster
+comment1.params=
+comment1.target=Rollercoaster()
+comment2.params=t\ rC\ rL\ minH
+comment2.target=Rollercoaster(double,\ double,\ double,\ int)
+comment3.params=t
+comment3.target=void\ getInLine(OtherFunctions.Ticket)
+comment4.params=
+comment4.target=void\ printLine()
+comment5.params=
+comment5.target=void\ run()
+comment6.params=
+comment6.target=double\ getWaitTime()
+comment7.params=
+comment7.target=void\ end()
+numComments=8
