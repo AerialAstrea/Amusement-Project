@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Soda
+comment1.params=n\ o\ i\ d\ p
+comment1.target=Soda(java.lang.String,\ int,\ boolean,\ boolean,\ double)
+comment2.params=
+comment2.target=int\ getNumSodas()
+comment3.params=
+comment3.target=int\ getNumDietSodas()
+comment4.params=
+comment4.target=double\ getPrice()
+numComments=5

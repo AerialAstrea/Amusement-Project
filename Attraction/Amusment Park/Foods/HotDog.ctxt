@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=HotDog
+comment1.params=
+comment1.target=HotDog()
+comment2.params=n\ p\ s\ m
+comment2.target=HotDog(java.lang.String,\ double,\ java.util.ArrayList,\ java.lang.String)
+comment3.params=m
+comment3.target=void\ changeMeat(java.lang.String)
+numComments=4
