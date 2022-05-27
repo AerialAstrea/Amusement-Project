@@ -1,3 +1,5 @@
+package Foods;
+
 import java.util.*;
 
 public class ChickenTenders extends Food{
@@ -11,6 +13,9 @@ public class ChickenTenders extends Food{
         pieces = 3;
         isSpicy = false;
         extraCrispy = false;
+        ArrayList<Sauce> s = new ArrayList<>();
+        s.add(new Sauce());
+        sauces = s;
     }
 
     public ChickenTenders(String n, double p, ArrayList<Sauce> sa, int pi, boolean s, boolean c){

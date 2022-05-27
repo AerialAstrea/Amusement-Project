@@ -1,4 +1,8 @@
-package src.otherFunctions;
+package OtherFunctions;
+
+import Foods.Food;
+import Drinks.Drink;
+import java.util.*;
 
 public class concessionStand{
     private double runningCost;
@@ -36,11 +40,11 @@ public class concessionStand{
     }
 
     public void buyDrink(Ticket t, Drink d){
-        t.withdraw(f.getPrice());
-        gain += f.getPrice();
+        t.withdraw(d.getPrice());
+        gain += d.getPrice();
     }
 
-    public void buyCombo(Ticket t, Food t, Drink d){ //a combo cost less than if buy each item separately
+    public void buyCombo(Ticket t, Food f, Drink d){ //a combo cost less than if buy each item separately
         t.withdraw(f.getPrice()*.8 + d.getPrice()*.2);
         gain += f.getPrice()*.8 + d.getPrice()*.2;
     }

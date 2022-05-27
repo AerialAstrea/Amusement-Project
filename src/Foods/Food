@@ -1,3 +1,5 @@
+package Foods;
+
 import java.util.*;
 
 public class Food{
@@ -5,7 +7,11 @@ public class Food{
     protected double price;
     protected ArrayList<Sauce> sauces = new ArrayList<Sauce>();
 
-    public food(String n, double p, ArrayList<Sauce> s){
+    public Food(){
+        name = "item";
+        price = 1.0;
+    }
+    public Food(String n, double p, ArrayList<Sauce> s){
         name = n;
         price = p;
         sauces = s;

@@ -1,3 +1,5 @@
+package Foods;
+
 import java.util.*;
 
 public class HotDog extends Food{

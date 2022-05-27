@@ -1,3 +1,5 @@
+package Foods;
+
 import java.util.*;
 
 public class Hamburger extends Food{

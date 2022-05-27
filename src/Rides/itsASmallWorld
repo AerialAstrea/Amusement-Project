@@ -1,6 +1,8 @@
+package Rides;
+
 import java.util.ArrayList;
 
-public class itsASmallWorld extends attraction  
+public class itsASmallWorld extends Attraction  
 {
     private boolean singing;
     private boolean firstHalfRide;

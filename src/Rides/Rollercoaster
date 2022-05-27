@@ -1,6 +1,10 @@
+package Rides;
+
+import OtherFunctions.Ticket;
+import OtherFunctions.Rider;
 import java.util.*;
 
-public class Rollercoaster extends attraction {
+public class Rollercoaster extends Attraction {
     private ArrayList<Ticket> regLine = new ArrayList<Ticket>();
     private ArrayList<Ticket> fastLine = new ArrayList<Ticket>();
     private boolean end;

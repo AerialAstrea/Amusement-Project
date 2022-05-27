@@ -1,12 +1,16 @@
 import java.util.*;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import Rides.Attraction;
+import Rides.Rollercoaster;
+import OtherFunctions.Ticket;
+import OtherFunctions.Rider;
 
 public class beParkGoer {
     public static void main(){
-        attraction basicBuggy = new attraction();
-        attraction relativelyExtrema = new attraction(10, 2.0, 1.0, 1.75/60.00, 50); //maxRider, ticketPrice, runCost, rideLen, minH
-        rollercoaster coasterToaster = new rollercoaster();
+        Attraction basicBuggy = new Attraction();
+        Attraction relativelyExtrema = new Attraction(10, 2.0, 1.0, 1.75/60.00, 50); //maxRider, ticketPrice, runCost, rideLen, minH
+        Rollercoaster coasterToaster = new Rollercoaster();
         
         ImageIcon my_icon = new ImageIcon("./Images/disney_world_logo.png");
 

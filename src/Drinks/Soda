@@ -1,3 +1,5 @@
+package Drinks;
+
 public class Soda extends Drink
 {
     //instance variables
@@ -6,9 +8,9 @@ public class Soda extends Drink
     private static int numDietSodas = 0;
     
     //constructor
-    public Soda(String n, int o, boolean i, boolean d)
+    public Soda(String n, int o, boolean i, boolean d, double p)
     {
-        super (n,o,i);
+        super(n,o,i,p);
         diet = d;
         numSodas ++;
         if(diet)
