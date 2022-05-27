@@ -1,0 +1,9 @@
+import javax.swing.JOptionPane;
+
+public class beParkGoer{
+    public static void main(){
+        Attraction a1 = new Attraction();
+        Attraction a2 = new Attraction(10, 2.0, 1.0, 1.75/60.00, 50); //maxRider, ticketPrice, runCost, rideLen, minH
+        
+    }
+}

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class rollercoaster extends attraction {
+public class Rollercoaster extends attraction {
     private ArrayList<Ticket> regLine = new ArrayList<Ticket>();
     private ArrayList<Ticket> fastLine = new ArrayList<Ticket>();
     private boolean end;

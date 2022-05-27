@@ -1,12 +1,13 @@
 import java.util.*;
 
-public class attraction {
+public class Attraction {
     //instance variable to be set in constructor
     protected int maxRiders;
     protected double ticketPrice;
-    protected double runningCost; // 1 = 1 million
+    protected double runningCost; // for one rider
     protected double rideLength; // in terms of hours
     protected int minHeight; // in inches
+    protected double addOpCost; //any additional operating cost (such as maintenance)
 
     //instance variables to be tracked in the class
     protected ArrayList<Ticket> inLine = new ArrayList<Ticket>(); //number of peole in line
@@ -25,18 +26,20 @@ public class attraction {
     public attraction(){
         maxRiders = 20;
         ticketPrice = 1.00;
-        runningCost = 5.0; //average Disney ride cost $5 million to operate
+        runningCost = 0.25;
         rideLength = 2.0/60.0; //default = 2 min ride
         minHeight = 48;
+        addOpCost = 0;
         numAttractions ++;
     }
 
-    public attraction(int m, double t, double rC, double rL, int minH){
+    public attraction(int m, double t, double rC, double rL, int minH){//maxRider, ticketPrice, runCost, rideLen, minH
         maxRiders = m;
         ticketPrice = t;
         runningCost = rC;
         rideLength = rL;
         minHeight = minH;
+        addOpCost = 0;
         numAttractions ++;
     }
 
@@ -148,8 +151,12 @@ public class attraction {
         ticketPrice += num;
     }
     
+    public void addAdditionalCost(double num){
+        addOpCost += num;
+    }
+
     public double totalProft(){
-        return totalRiders*ticketPrice - runningCost;
+        return totalRiders*ticketPrice - totalRides*runningCost - addOpCost;
     }
 
     public int getTotalRiders(){

@@ -27,7 +27,7 @@ public class attractionTest
         Ticket p3 = new Ticket(party3, true, 110.00);
         Ticket p4 = new Ticket(party4, false, 2.00); //not enough money, need 4.00 to ride
         
-        attraction a1 = new attraction();
+        Attraction a1 = new Attraction();
         a1.getInLine(p1); a1.getInLine(p2); a1.getInLine(p3); a1.getInLine(p4);
         a1.printLine();
         /* Expected Name Print:
@@ -65,7 +65,7 @@ public class attractionTest
         Ticket p3 = new Ticket(party3, true, 110.00);
         Ticket p4 = new Ticket(party4, false, 2.00); //not enough money, need 4.00 to ride
         
-        rollercoaster r1 = new rollercoaster();
+        Rollercoaster r1 = new Rollercoaster();
         r1.getInLine(p1); r1.getInLine(p2); r1.getInLine(p3); r1.getInLine(p4);
         r1.printLine();
         /* Expected Name Print:
