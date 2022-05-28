@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Tea
-comment1.params=n\ o\ i\ s\ p
-comment1.target=Tea(java.lang.String,\ int,\ boolean,\ boolean,\ double)
-comment2.params=
-comment2.target=int\ getNumTeas()
-numComments=3
